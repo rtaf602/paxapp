@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a5c9a"/><stop offset="1" stop-color="#0b3156"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- เส้นฟ้าด้านล่าง เหมือนแถบหัวของหน้า -->
+  <rect x="0" y="472" width="512" height="40" fill="#1f78c8"/>
+  <rect x="0" y="472" width="512" height="8" fill="#7cc4ff"/>
+  <!-- เครื่องบินเล็กมุมขวาบน -->
+  <g transform="translate(388 128) rotate(45) scale(3.6) translate(-12 -11.5)">
+    <path d="M12 2c.9 0 1.5 1 1.5 2.2V9l7.5 4.5v2l-7.5-2.2v4.6l2.2 1.6V21L12 20l-3.7 1v-1.5l2.2-1.6v-4.6L3 15.5v-2L10.5 9V4.2C10.5 3 11.1 2 12 2z" fill="#9fd2ff"/>
+  </g>
+  <!-- เก้าอี้ผู้โดยสาร มุมมองด้านข้าง -->
+  <g transform="translate(26 0)">
+  <g fill="#ffffff">
+    <rect x="128" y="96" width="72" height="232" rx="36" transform="rotate(-14 164 328)"/>
+    <rect x="150" y="286" width="210" height="64" rx="32"/>
+    <rect x="232" y="350" width="34" height="62" />
+    <rect x="176" y="402" width="164" height="26" rx="13"/>
+  </g>
+  <rect x="196" y="246" width="138" height="24" rx="12" fill="#9fd2ff"/>
+  </g>
+</svg>
