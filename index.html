@@ -106,6 +106,53 @@ main.wrap { display: grid; gap: 16px; padding-block: 24px 36px; }
 .pass:hover .cta svg { transform: translateX(3px); }
 .pass:active { transform: scale(.985); }
 
+/* ---------- ปุ่มแชร์ในแถบหัว ---------- */
+.share-top { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 30px; padding: 0 12px; flex: none; cursor: pointer;
+  font: inherit; font-size: 12.5px; font-weight: 500; color: #fff; background: var(--sky); border: 0; border-radius: 15px; }
+.share-top svg { width: 14px; height: 14px; }
+
+/* ---------- แชร์ และ ติดตั้งเป็นแอป ---------- */
+.more { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0,1fr)); margin-top: 8px; }
+.panel { display: grid; align-content: start; gap: 12px; padding: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 2px 10px var(--shadow); min-width: 0; }
+.panel h2 { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 17px; font-weight: 600; }
+.panel h2 svg { width: 22px; height: 22px; flex: none; color: var(--sky-text); }
+.panel > p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.55; }
+.btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 16px; cursor: pointer; text-decoration: none;
+  font: inherit; font-size: 15px; font-weight: 600; color: var(--sky-text); background: var(--sky-soft); border: 0; border-radius: 12px; -webkit-tap-highlight-color: transparent; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn.primary { color: #fff; background: var(--sky); }
+.btn.line { color: #fff; background: #06c755; }
+.btn:active { transform: scale(.97); }
+.btn[hidden] { display: none; }
+.url { display: flex; align-items: center; gap: 8px; padding: 10px 12px; font-size: 14px; background: var(--bg); border: 1px dashed var(--line); border-radius: 10px; overflow-wrap: anywhere; }
+.qr { display: flex; align-items: center; gap: 14px; font-size: 13.5px; color: var(--muted); }
+.qr-box { width: 112px; height: 112px; flex: none; padding: 6px; background: #fff; border-radius: 10px; border: 1px solid var(--line); }
+.qr-box svg, .qr-box img { width: 100%; height: 100%; display: block; }
+.qr[hidden] { display: none; }
+
+.tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; background: var(--bg); border-radius: 12px; }
+.tab { min-height: 40px; cursor: pointer; font: inherit; font-size: 14px; font-weight: 600; color: var(--muted); background: transparent; border: 0; border-radius: 9px; }
+.tab[aria-selected="true"] { color: var(--sky-text); background: var(--panel); box-shadow: 0 1px 4px var(--shadow); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: s; }
+.steps li { position: relative; padding-left: 38px; min-height: 28px; font-size: 14.5px; line-height: 1.6; counter-increment: s; }
+.steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 26px; height: 26px; display: grid; place-items: center; font-size: 13px; font-weight: 600; color: #fff; background: var(--stub); border-radius: 13px; }
+.steps[hidden] { display: none; }
+.steps b { font-weight: 600; }
+.key { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 5px; vertical-align: -6px; font-size: 13px; font-weight: 600; color: var(--sky-text); background: var(--sky-soft); border-radius: 6px; }
+.key svg { width: 15px; height: 15px; }
+.tip { margin: 0; padding: 10px 12px; font-size: 13.5px; line-height: 1.55; color: var(--fg); background: var(--sky-soft); border-radius: 10px; }
+.tip[hidden] { display: none; }
+.warn { margin: 0; padding: 12px 14px; font-size: 14px; line-height: 1.55; color: #6b4a00; background: #fff4d6; border: 1px solid #f0d58a; border-radius: 10px; }
+@media (prefers-color-scheme: dark) { .warn { color: #ffe2a0; background: #3a2e10; border-color: #6b5520; } }
+.warn[hidden] { display: none; }
+.done { margin: 0; font-size: 14.5px; color: var(--sky-text); font-weight: 600; }
+
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom,0px)); z-index: 50; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  padding: 10px 18px; font-size: 14px; font-weight: 500; color: #fff; background: rgba(13,43,74,.94); border-radius: 22px; transition: opacity .2s ease, transform .2s ease; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+@media (max-width: 760px) { .more { grid-template-columns: minmax(0,1fr); } }
+
 footer { display: flex; align-items: center; justify-content: center; gap: 10px; padding-block: 6px calc(28px + env(safe-area-inset-bottom,0px)); font-size: 12.5px; color: var(--muted); letter-spacing: .04em; }
 footer .crest { width: 22px; height: 22px; }
 
@@ -148,6 +195,11 @@ html.m .go { display: grid; place-items: center; align-self: center; width: 42px
 html.m .go svg { width: 18px; height: 18px; }
 html.m .pass:hover { transform: none; }
 html.m .pass:active { transform: scale(.98); background: var(--sky-soft); }
+html.m .share-top span { display: none; }
+html.m .share-top { width: 34px; height: 34px; padding: 0; border-radius: 17px; }
+html.m .share-top svg { width: 16px; height: 16px; }
+html.m .more { grid-template-columns: minmax(0,1fr); gap: 12px; }
+html.m .btns .btn { flex: 1 1 140px; }
 html.m footer { font-size: 11px; padding-inline: 16px; text-align: center; }
 @media (prefers-reduced-motion: reduce) { .pass, .cta svg { transition: none; } .pass:hover, .pass:active { transform: none; } }
 </style>
@@ -188,6 +240,7 @@ html.m footer { font-size: 11px; padding-inline: 16px; text-align: center; }
     <svg class="crest" aria-hidden="true"><use href="#crest"/></svg>
     <div class="id"><span>กองทัพอากาศ · กองบิน 6</span><strong>ฝูงบิน 602</strong></div>
     <span class="guest"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="5.5" r="2.6"/><path d="M2.8 14c.6-2.7 2.7-4.2 5.2-4.2s4.6 1.5 5.2 4.2"/></svg><span>สำหรับหน่วยงานภายนอก</span></span>
+    <button class="share-top" type="button" id="share-top" aria-label="แชร์หน้านี้"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="4.5" r="2.3"/><circle cx="5" cy="10" r="2.3"/><circle cx="15" cy="15.5" r="2.3"/><path d="M7 8.9l6-3.3M7 11.1l6 3.3"/></svg><span>แชร์</span></button>
   </div>
   <img class="banner-img" src="hero-plane.jpg" alt="">
   <div class="wrap banner">
@@ -206,7 +259,55 @@ html.m footer { font-size: 11px; padding-inline: 16px; text-align: center; }
 
   <!-- รายชื่อระบบ: เพิ่มหรือแก้ที่ TYPES ในสคริปต์ด้านล่าง -->
   <div class="cards" id="cards"></div>
+
+  <!-- แชร์ และ วิธีติดตั้งเป็นแอป -->
+  <section class="more">
+    <div class="panel" id="share">
+      <h2><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="4.5" r="2.3"/><circle cx="5" cy="10" r="2.3"/><circle cx="15" cy="15.5" r="2.3"/><path d="M7 8.9l6-3.3M7 11.1l6 3.3"/></svg>แชร์ให้คนอื่น</h2>
+      <p>ส่งลิงก์หน้านี้ให้ผู้โดยสาร หรือหน่วยงานที่ร่วมเดินทาง</p>
+      <div class="btns">
+        <button class="btn primary" type="button" id="share-btn" hidden><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="4.5" r="2.3"/><circle cx="5" cy="10" r="2.3"/><circle cx="15" cy="15.5" r="2.3"/><path d="M7 8.9l6-3.3M7 11.1l6 3.3"/></svg>แชร์ลิงก์</button>
+        <a class="btn line" id="line-btn" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5 1.1-.5 5.9-3.5 8-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>ส่งทาง LINE</a>
+        <button class="btn" type="button" id="copy-btn"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M13 7V4.5A1.5 1.5 0 0 0 11.5 3h-7A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13H7"/></svg>คัดลอกลิงก์</button>
+      </div>
+      <div class="url" id="url-text"></div>
+      <div class="qr" id="qr" hidden><div class="qr-box" id="qr-box"></div><span>ให้คนที่อยู่ข้าง ๆ ใช้กล้องมือถือสแกน QR นี้ เพื่อเปิดหน้านี้ได้ทันที</span></div>
+    </div>
+
+    <div class="panel" id="install">
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v7M9 11.5l3 3 3-3"/></svg>ติดตั้งเป็นแอปบนมือถือ</h2>
+      <p>เพิ่มไอคอน 602 SEAT PLAN ไว้ที่หน้าจอ เปิดใช้ได้ทันทีเหมือนแอป ไม่ต้องดาวน์โหลดจาก Store</p>
+      <p class="done" id="installed" hidden>✓ เปิดจากแอปที่ติดตั้งแล้ว</p>
+      <p class="warn" id="inapp" hidden>ตอนนี้เปิดอยู่ในแอป <b id="inapp-name">LINE</b> ซึ่งติดตั้งไม่ได้ ให้กด <span class="key">⋮</span> หรือ <span class="key">⋯</span> แล้วเลือก <b>เปิดในเบราว์เซอร์</b> ก่อน แล้วค่อยทำตามขั้นตอนด้านล่าง</p>
+      <button class="btn primary" type="button" id="install-btn" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7.5v7M9 11.5l3 3 3-3"/></svg>ติดตั้งแอปเลย</button>
+      <div class="tabs" role="tablist" aria-label="เลือกยี่ห้อมือถือ">
+        <button class="tab" type="button" role="tab" data-os="android" aria-selected="false">Android</button>
+        <button class="tab" type="button" role="tab" data-os="ios" aria-selected="false">iPhone</button>
+        <button class="tab" type="button" role="tab" data-os="samsung" aria-selected="false">Samsung</button>
+      </div>
+      <ol class="steps" data-os="android">
+        <li>เปิดหน้านี้ใน <b>Chrome</b></li>
+        <li>กดปุ่ม <span class="key">⋮</span> มุมขวาบน</li>
+        <li>เลือก <b>เพิ่มลงในหน้าจอหลัก</b> หรือ <b>ติดตั้งแอป</b></li>
+        <li>กด <b>ติดตั้ง</b> แล้วไอคอน 602 SEAT PLAN จะอยู่ที่หน้าจอหลัก</li>
+      </ol>
+      <ol class="steps" data-os="ios" hidden>
+        <li>เปิดหน้านี้ใน <b>Safari</b></li>
+        <li>กดปุ่มแชร์ <span class="key"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5v10M6.5 6L10 2.5 13.5 6"/><path d="M6.5 9H5v8.5h10V9h-1.5"/></svg></span> ที่แถบด้านล่าง (ถ้าไม่เห็น ให้กด <span class="key">⋯</span> ก่อน)</li>
+        <li>เลื่อนลง แล้วเลือก <b>เพิ่มไปยังหน้าจอโฮม</b></li>
+        <li>กด <b>เพิ่ม</b> มุมขวาบน แล้วไอคอน 602 SEAT PLAN จะอยู่ที่หน้าจอโฮม</li>
+      </ol>
+      <ol class="steps" data-os="samsung" hidden>
+        <li>เปิดหน้านี้ใน <b>Samsung Internet</b> (ไอคอนดาวเคราะห์สีม่วง)</li>
+        <li>กดปุ่มเมนู <span class="key">≡</span> มุมขวาล่าง</li>
+        <li>เลือก <b>เพิ่มหน้าไปที่</b> แล้วเลือก <b>หน้าจอหลัก</b></li>
+        <li>กด <b>เพิ่ม</b> แล้วไอคอน 602 SEAT PLAN จะอยู่ที่หน้าจอหลัก</li>
+      </ol>
+      <p class="tip" id="samsung-tip" hidden>มือถือ Samsung ที่ใช้ Chrome ก็ทำตามขั้นตอนของ Android ได้</p>
+    </div>
+  </section>
 </main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <footer><svg class="crest" aria-hidden="true"><use href="#crest"/></svg>SQUADRON 602 · WING 6 · ROYAL THAI AIR FORCE</footer>
 
@@ -247,6 +348,87 @@ function tick() {
   try { $('today').textContent = d.toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { /* ไม่แสดงวันที่ */ }
 }
 tick(); setInterval(tick, 15000);
+
+/* ---------- แชร์หน้านี้ ---------- */
+const SHARE_URL = 'https://rtaf602.github.io/paxapp/';
+const SHARE_TEXT = '602 SEAT PLAN · ผังที่นั่งผู้โดยสาร ฝูงบิน 602';
+const toastEl = $('toast');
+let toastTimer;
+function toast(msg) {
+  toastEl.textContent = msg; toastEl.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2200);
+}
+$('url-text').textContent = SHARE_URL;
+$('line-btn').href = 'https://line.me/R/share?text=' + encodeURIComponent(SHARE_TEXT + '\n' + SHARE_URL);
+const canShare = !!navigator.share;
+$('share-btn').hidden = !canShare;
+async function copyLink() {
+  try { await navigator.clipboard.writeText(SHARE_URL); }
+  catch (e) {
+    const t = document.createElement('textarea'); t.value = SHARE_URL; t.setAttribute('readonly', '');
+    t.style.position = 'fixed'; t.style.opacity = '0'; document.body.appendChild(t); t.select();
+    try { document.execCommand('copy'); } catch (e2) { /* คัดลอกไม่ได้ */ }
+    t.remove();
+  }
+  toast('คัดลอกลิงก์แล้ว');
+}
+async function share() {
+  if (canShare) {
+    try { await navigator.share({ title: '602 SEAT PLAN', text: SHARE_TEXT, url: SHARE_URL }); return; }
+    catch (e) { if (e && e.name === 'AbortError') return; }
+  }
+  $('share').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+$('share-btn').addEventListener('click', share);
+$('share-top').addEventListener('click', share);
+$('copy-btn').addEventListener('click', copyLink);
+
+/* QR: โหลดตัวสร้าง QR จาก cdnjs เมื่อจำเป็น ถ้าโหลดไม่ได้ก็ไม่แสดง */
+(function loadQR() {
+  const sc = document.createElement('script');
+  sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js';
+  sc.async = true;
+  sc.onload = () => {
+    try {
+      const qr = window.qrcode(0, 'M'); qr.addData(SHARE_URL); qr.make();
+      $('qr-box').innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+      $('qr').hidden = false;
+    } catch (e) { /* ไม่แสดง QR */ }
+  };
+  document.head.appendChild(sc);
+})();
+
+/* ---------- วิธีติดตั้งเป็นแอป ---------- */
+const ua = navigator.userAgent || '';
+const isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+const isSamsung = /SamsungBrowser/i.test(ua);
+const isSamsungDevice = /SM-|Samsung/i.test(ua);
+const inApp = /\bLine\//i.test(ua) ? 'LINE' : /FBAN|FBAV|FB_IAB/i.test(ua) ? 'Facebook' : /Instagram/i.test(ua) ? 'Instagram' : /Messenger/i.test(ua) ? 'Messenger' : '';
+const standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+
+function showOS(os) {
+  document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-selected', String(b.dataset.os === os)));
+  document.querySelectorAll('.steps[data-os]').forEach(l => { l.hidden = l.dataset.os !== os; });
+  $('samsung-tip').hidden = os !== 'samsung';
+}
+document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => showOS(b.dataset.os)));
+showOS(isIOS ? 'ios' : (isSamsung || isSamsungDevice) ? 'samsung' : 'android');
+
+if (inApp) { $('inapp-name').textContent = inApp; $('inapp').hidden = false; }
+if (standalone) { $('installed').hidden = false; }
+
+/* Chrome / Samsung Internet บน Android: มีปุ่มติดตั้งให้กดได้เลย */
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault(); deferredPrompt = e; $('install-btn').hidden = false;
+});
+$('install-btn').addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  try { await deferredPrompt.userChoice; } catch (e) { /* ผู้ใช้ปิด */ }
+  deferredPrompt = null; $('install-btn').hidden = true;
+});
+window.addEventListener('appinstalled', () => { $('install-btn').hidden = true; toast('ติดตั้ง 602 SEAT PLAN แล้ว'); });
 })();
 </script>
 </body>
